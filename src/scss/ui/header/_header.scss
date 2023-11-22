@@ -1,0 +1,35 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.header{
+    background-image: linear-gradient(to right, transparentize(v.$primario, .1) 0%, transparentize(v.$primario, .1) 100%), url(../img/header_bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 3rem 0;
+
+    &__barra{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @include m.tablet { 
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+
+    &__logo{
+        width: 25rem;
+    }
+}
+
+.navegacion{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5rem;
+
+    &__link{
+        
+    }
+}
