@@ -6,6 +6,10 @@
     background-repeat: no-repeat;
     background-size: cover;
     padding: 3rem 0;
+    position: relative;
+    @include m.tablet { 
+        padding: 3rem 0 20rem 0;
+    }
 
     &__barra{
         display: flex;
@@ -21,6 +25,48 @@
     &__logo{
         width: 25rem;
     }
+
+    &__contenido{
+        @include m.tablet { 
+            margin-top: 10rem;
+            max-width: 50rem;
+        }
+    }
+
+    &__heading{
+        color: v.$blanco;
+        text-align: center;
+        @include m.tablet { 
+            text-align: left;
+        }
+    }
+
+    &__texto{
+        color: v.$blanco;
+        display: none;//cuando estamos en un dispositivos moviles desaparece el texto
+        @include m.tablet { 
+            display: block; 
+        }
+    }
+
+    &__imagen{
+        display: none;
+        @include m.tablet { 
+            display: block;
+            position: absolute;
+            right: 0;
+            bottom: -5rem;
+            max-width: 35rem;
+            border-top-left-radius: 2rem;
+            border-bottom-left-radius: 5rem;
+        }
+        @include m.desktopXL { 
+            max-width: 60rem;
+        }
+    }
+
+    
+    
 }
 
 .navegacion{
@@ -29,7 +75,23 @@
     align-items: center;
     margin-top: 5rem;
 
+    @include m.tablet { 
+        flex-direction: row;
+        gap: 2rem; //separacion
+        margin-top: 0;
+    }
+
     &__link{
-        
+        color: v.$blanco;
+        font-size: 1.8rem;
+        margin-bottom: 2rem;
+
+        &:last-of-type{
+            margin-bottom: 0;
+        }
+
+        @include m.tablet { 
+            margin-bottom: 0;
+        }
     }
 }
