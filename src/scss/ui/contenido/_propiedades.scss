@@ -1,0 +1,72 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.propiedades{
+    margin-top: 5rem;
+
+    @include m.tablet { 
+        margin-top: 10rem;
+    }
+
+    &__heading{
+        @include m.heading;
+    }
+
+    &__grid{
+        @include m.grid(1, 2rem);
+        @include m.tablet { 
+            @include m.grid(3, 2rem);
+        }
+    }
+}
+
+.propiedad{
+    background-color: v.$blanco;
+    
+    &__imagen{
+        aspect-ratio: 10 / 6; //por cada 10px horizontales recibe 3 verticales
+        background-size: auto 150%;
+        position: relative;
+    }
+    
+
+    /**
+    * !SASS tambien se comporta como un lenguaje de programacion
+    */
+
+    @for $i from 1 through 6{//se va a ejecutar 6 veces
+        $imagen: '../img/propiedad_' + $i + '.jpg';
+        &:nth-child(#{$i}) &__imagen{
+            background-image: linear-gradient(to bottom, transparentize(v.$negro, 1%) 0%, transparentize(v.$negro, .3%) 100%), url($imagen);
+        }
+    }
+
+    &__nombre{
+        position: absolute;
+        left: 1rem;
+        bottom: 1rem;
+        color: v.$blanco;
+        font-size: 2.4rem;
+    }
+
+    &__contenido{
+        padding: 2rem;
+    }
+
+    &__texto{
+        margin-bottom: 0;
+    }
+
+    &__precio{
+        font-size: 3rem;
+        margin: 0;
+    }
+
+    &__enlace{
+        @include m.boton(v.$primario, v.$blanco);
+        display: block;
+        text-transform: uppercase;
+    }
+
+}
+
